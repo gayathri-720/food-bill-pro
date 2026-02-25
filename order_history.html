@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Orders</title>
+</head>
+<body>
+
+<h2>My Order History</h2>
+<a href="/menu">Back to Menu</a>
+
+{% if orders|length == 0 %}
+    <p>You have not placed any orders yet.</p>
+{% endif %}
+
+{% for order in orders %}
+    <div style="border:1px solid black;padding:15px;margin:15px;">
+
+        <h3>Order #{{ order["id"] }}</h3>
+        <p><strong>Date:</strong> {{ order["created_at"] }}</p>
+
+        <h4>Items:</h4>
+        <ul>
+            {% for item in order["items"] %}
+                <li>{{ item["item_name"] }} - ₹{{ item["price"] }}</li>
+            {% endfor %}
+        </ul>
+
+        <p><strong>Total:</strong> ₹{{ order["total"] }}</p>
+
+    </div>
+{% endfor %}
+
+<br>
+<a href="/menu">Back to Menu</a>
+
+</body>
+</html>

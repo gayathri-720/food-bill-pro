@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ group_name }} Offers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>{{ group_name }} - Special Offers</h2>
+
+{% if offers %}
+    {% for offer in offers %}
+        <div class="offer-card">
+
+            <h3>{{ offer.title }}</h3>
+
+            <p>{{ offer.description }}</p>
+
+            <p><strong>Price:</strong> ₹{{ offer.price }}</p>
+
+            <p class="expiry">
+                <strong>Expires at:</strong> {{ offer.expiry_datetime }}
+            </p>
+
+            <form method="POST" action="/add_offer_to_cart">
+
+                <input type="hidden" name="offer_id" value="{{ offer.id }}">
+
+                <div class="quantity-box">
+                    <button type="button"
+                            onclick="decreaseQty({{ offer.id }})">-</button>
+
+                    <span id="qty-{{ offer.id }}">1</span>
+
+                    <button type="button"
+                            onclick="increaseQty({{ offer.id }})">+</button>
+                </div>
+
+                <input type="hidden"
+                       name="quantity"
+                       id="input-{{ offer.id }}"
+                       value="1">
+
+                <button type="submit" class="add-btn">
+                    Add to Cart
+                </button>
+
+            </form>
+
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No offers available right now.</p>
+{% endif %}
+
+<br>
+<a href="/my_groups">Back to Groups</a>
+
+<script>
+function increaseQty(id){
+    let span = document.getElementById("qty-"+id);
+    let input = document.getElementById("input-"+id);
+    let val = parseInt(span.innerText);
+    span.innerText = val + 1;
+    input.value = val + 1;
+}
+
+function decreaseQty(id){
+    let span = document.getElementById("qty-"+id);
+    let input = document.getElementById("input-"+id);
+    let val = parseInt(span.innerText);
+    if(val > 1){
+        span.innerText = val - 1;
+        input.value = val - 1;
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<h2>🔥 Today's Special</h2>
+
+{% for item in specials %}
+<div style="border:1px solid #ccc; padding:15px; margin:10px; background:#ffe6e6;">
+    <h3>{{ item[1] }}</h3>
+    <p>Category: {{ item[2] }}</p>
+    <p>Price: ₹{{ item[3] }}</p>
+
+    <form action="/add_special_to_cart" method="POST">
+    <input type="hidden" name="item_id" value="{{ item[0] }}">
+    <input type="hidden" name="quantity" value="1">
+    <button type="submit">Add to Cart</button>
+</form>
+</div>
+{% endfor %}
+
+<a href="/menu">Back to Menu</a>

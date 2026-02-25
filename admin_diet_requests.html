@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diet Menu Requests</title>
+</head>
+<body>
+    <h2>Diet Menu Requests</h2>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Name</th>
+            <th>Shift</th>
+            <th>Mobile</th>
+            <th>Days</th>
+            <th>Months</th>
+            <th>Liquids</th>
+            <th>Non-Veg</th>
+            <th>Food Items</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        {% for r in requests %}
+        <tr>
+            <td>{{ r['name'] }}</td>
+            <td>{{ r['shift'] }}</td>
+            <td>{{ r['mobile'] }}</td>
+            <td>{{ r['days'] }}</td>
+            <td>{{ r['months'] }}</td>
+            <td>{{ r['liquids'] }}</td>
+            <td>{{ r['nonveg'] }}</td>
+            <td>{{ r['food_items'] }}</td>
+            <td>{{ r['status'] }}</td>
+            <td>
+                {% if r['status'] == 'Pending' %}
+                    <a href="/admin/diet_requests/{{ r['id'] }}/Accept">Accept</a>
+                    <a href="/admin/diet_requests/{{ r['id'] }}/Reject">Reject</a>
+                {% else %}
+                    {{ r['status'] }}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

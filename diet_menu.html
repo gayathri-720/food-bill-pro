@@ -1,0 +1,14 @@
+<h2>Diet Menu Request</h2>
+<a href="{{ url_for('my_diet_requests') }}">My Diet Requests</a><br><br><br>
+
+<form method="POST">
+    Name: <input type="text" name="name" required><br><br>
+    Shift: <input type="text" name="shift" required><br><br>
+    Mobile: <input type="text" name="mobile" required><br><br>
+    Days: <input type="number" name="days" required><br><br>
+    Months: <input type="number" name="months" ><br><br>
+    Liquids: <textarea name="liquids" ></textarea><br><<br>br>
+    Non-Veg: <textarea name="nonveg" ></textarea><br>
+    Food Items (with quantity): <textarea name="food_items" required></textarea><br><br>
+    <button type="submit">Apply</button>
+</form>

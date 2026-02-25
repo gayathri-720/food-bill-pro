@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Groups</title>
+</head>
+<body>
+
+<h2>My Groups</h2>
+<a href="/menu">Back to Menu</a>
+
+{% if groups|length == 0 %}
+    <p>You are not part of any group yet.</p>
+{% endif %}
+
+{% for group in groups %}
+    <div style="border:1px solid black;padding:15px;margin:15px;">
+
+        <h3>{{ group.group_name }}</h3>
+
+        <!-- Members -->
+        <p><strong>Members:</strong></p>
+        <ul>
+            {% for member in group.members %}
+                <li>{{ member.name }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Offers -->
+        <h4>Available Offers:</h4>
+
+        {% if group.offers|length == 0 %}
+            <p>No offers available.</p>
+        {% else %}
+            {% for offer in group.offers %}
+                <div style="border:1px dashed gray;padding:10px;margin:10px;">
+                    <p><strong>{{ offer.title }}</strong></p>
+                    <p>{{ offer.description }}</p>
+                    <p>Offer Price: ₹{{ offer.price }}</p>
+                    <p>Expires: {{ offer.expiry_datetime }}</p>
+
+                    <form method="POST" action="/claim_offer/{{ offer.id }}">
+                        <button type="submit">Claim Offer</button>
+                    </form>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+{% endfor %}
+
+<br>
+<a href="/menu">Back to Menu</a>
+
+</body>
+</html>

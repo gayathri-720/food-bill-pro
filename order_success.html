@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Success</title>
+</head>
+<body>
+
+<h2>🎉 Order Placed Successfully!</h2>
+
+{% if method == "upi" %}
+<p>Payment Method: UPI</p>
+<p>Your payment is being verified.</p>
+
+{% elif method == "card" %}
+<p>Payment Method: Card</p>
+<p>Your card has been charged successfully.</p>
+
+{% elif method == "cod" %}
+<p>Payment Method: Cash on Delivery</p>
+<p>Please pay at the time of delivery.</p>
+{% endif %}
+
+<a href="/menu">Back to Menu</a>
+
+</body>
+</html>

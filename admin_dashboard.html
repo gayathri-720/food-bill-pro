@@ -1,0 +1,30 @@
+<h2>Admin Dashboard</h2>
+<a href="/admin/add_special">
+    <button style="background:red;color:white;padding:10px 15px;border:none;border-radius:5px;">
+        🔥 Add Today's Special
+    </button>
+<a href="/admin/diet_requests" style="background-color: #4CAF50; color: white; padding: 8px 12px; text-decoration: none; border-radius: 5px;">Diet Menu Requests</a>
+</a>
+<div style="margin-bottom:15px;">
+    <a href="/admin/dashboard">
+        <button>⬅ Back</button>
+    </a>
+
+    <a href="/logout" style="float:right;">
+        <button>Logout</button>
+    </a>
+</div>
+
+<a href="/admin_suppliers">View Suppliers</a>
+
+<h3>All Groups </h3>
+
+
+{% for group in groups %}
+    <div style="border:1px solid black;padding:10px;margin:10px;">
+        <h3>{{ group.group_name }}</h3>
+        <p>Total Members: {{ group.total_members }}</p>
+        <a href="/admin/group/{{ group.id }}">Open Group</a>
+        
+    </div>
+{% endfor %}

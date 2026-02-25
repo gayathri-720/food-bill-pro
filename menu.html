@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="top-bar">
+    <a href="/my_groups" class="btn">My Groups</a>
+<a href="/orders" class="btn">My Orders</a>
+<a href="/supplier_dashboard" class="btn">Dealership</a>
+<a href="/today_special">
+    <button>🔥 Today's Special</button>
+</a>
+<!-- menu.html snippet -->
+<form action="{{ url_for('diet_menu') }}" method="GET">
+    <button type="submit">Diet Menu Request</button>
+</form>
+    <div class="search-bar">
+        <form method="GET" action="/menu">
+            <input type="text" name="search"
+                   placeholder="Search Biryani, Pizza, Coffee...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <h3>Welcome {{ session['user_name'] }}</h3>
+
+    <a href="/logout" class="logout-btn">Logout</a>
+</div>
+
+<h2 class="menu-title">Our Special Menu</h2>
+<div class="scroll-container">
+    <div class="scroll-text">
+        🍽 Welcome to SmartFoodHub {{ session.get('user_name') }} 🍽
+    </div>
+</div>
+<div class="menu-container">
+    {% for item in items %}
+    <div class="menu-card">
+
+        <div class="item-image">
+             <img src="{{ url_for('static',filename='food_images/' + item.image) }}"alt="{{ item.item_name }}">
+        </div>
+
+        <h3>{{ item.item_name }}</h3>
+        <p class="price">₹ {{ item.price }}</p>
+
+        <form method="POST" action="/add_to_cart">
+
+            <input type="hidden"
+                   name="item_id"
+                   value="{{ item.id }}">
+
+            <input type="hidden"
+                   id="hidden-qty-{{ item.id }}"
+                   name="quantity"
+                   value="1">
+
+            <div class="quantity-box">
+                <button type="button"
+                        onclick="decreaseQty({{ item.id }})">-</button>
+
+                <span id="qty-{{ item.id }}">1</span>
+
+                <button type="button"
+                        onclick="increaseQty({{ item.id }})">+</button>
+            </div>
+
+            <button type="submit" class="cart-btn">
+                Add to Cart
+            </button>
+
+        </form>
+
+    </div>
+    {% endfor %}
+</div>
+
+
+<script>
+function increaseQty(id){
+    let qtyElement = document.getElementById("qty-" + id);
+    let hiddenInput = document.getElementById("hidden-qty-" + id);
+    let qty = parseInt(qtyElement.innerText);
+    qtyElement.innerText = qty + 1;
+    hiddenInput.value = qty + 1;
+}
+
+function decreaseQty(id){
+    let qtyElement = document.getElementById("qty-" + id);
+    let hiddenInput = document.getElementById("hidden-qty-" + id);
+    let qty = parseInt(qtyElement.innerText);
+    if(qty > 1){
+        qtyElement.innerText = qty - 1;
+        hiddenInput.value = qty - 1;
+    }
+}
+</script>
+</body>
+</html>

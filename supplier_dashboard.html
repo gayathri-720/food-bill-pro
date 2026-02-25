@@ -1,0 +1,24 @@
+<h2>Supplier Dashboard</h2>
+<div style="margin-bottom:15px;">
+    <a href="/menu">
+        <button>⬅ Back</button>
+    </a>
+
+    <a href="/logout" style="float:right;">
+        <button>Logout</button>
+    </a>
+</div>
+<a href="/view_my_listings">View My Listings</a>
+
+<h3>Add Item</h3>
+
+<form action="/add_supplier_item" method="POST">
+    Item Name: <input type="text" name="item_name" required><br><br>
+    Category: <input type="text" name="category" required><br><br>
+    Price per kg: <input type="number" step="0.01" name="price" required><br><br>
+    Quantity (kg): <input type="number" name="quantity" required><br><br>
+    Location: <input type="text" name="location" required><br><br>
+    Contact: <input type="text" name="contact" required><br><br>
+
+    <button type="submit">Add Item</button>
+</form>

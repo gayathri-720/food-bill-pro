@@ -1,0 +1,60 @@
+<h2>All Supplier Listings</h2>
+<div style="margin-bottom:15px;">
+    <a href="/admin/dashboard">
+        <button>⬅ Back</button>
+    </a>
+
+    <a href="/logout" style="float:right;">
+        <button>Logout</button>
+    </a>
+</div>
+
+<form method="GET">
+    Filter by Category:
+    <select name="category">
+        <option value="All">All</option>
+        {% for cat in categories %}
+            <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>
+                {{ cat }}
+            </option>
+        {% endfor %}
+    </select>
+
+    Sort by:
+    <select name="sort">
+        <option value="">Newest</option>
+        <option value="low" {% if selected_sort == "low" %}selected{% endif %}>
+            Lowest Price
+        </option>
+    </select>
+
+    <button type="submit">Apply</button>
+</form>
+
+<br>
+<table border="1">
+<tr>
+    <th>Supplier</th>
+    <th>Item</th>
+    <th>Category</th>
+    <th>Price per kg</th>
+    <th>Quantity</th>
+    <th>Location</th>
+    <th>Contact</th>
+    <th>Date</th>
+</tr>
+
+{% for item in items %}
+<tr>
+    <td>{{ item[0] }}</td>   <!-- username -->
+    <td>{{ item[1] }}</td>   <!-- item_name -->
+    <td>{{ item[2] }}</td>   <!-- category -->
+    <td>{{ item[3] }}</td>   <!-- price -->
+    <td>{{ item[4] }}</td>   <!-- quantity -->
+    <td>{{ item[5] }}</td>   <!-- location -->
+    <td>{{ item[6] }}</td>   <!-- contact -->
+    <td>{{ item[7] }}</td>   <!-- created_at -->
+</tr>
+{% endfor %}
+
+</table>

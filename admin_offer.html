@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - Post Offer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>Admin - Post Offer</h2>
+
+<form method="POST" class="offer-form">
+
+    <label>Select Group</label>
+    <select name="group_id" required>
+        {% for group in groups %}
+            <option value="{{ group.id }}">
+                {{ group.group_name }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <label>Offer Title</label>
+    <input type="text"
+           name="title"
+           placeholder="Enter offer title"
+           required>
+
+    <label>Offer Description</label>
+    <textarea name="description"
+              placeholder="Enter offer description"
+              required></textarea>
+
+    <label>Price (₹)</label>
+    <input type="number"
+           name="price"
+           placeholder="Enter price"
+           min="1"
+           required>
+
+    <label>Expiry Date</label>
+    <input type="date"
+           name="expiry_date"
+           required>
+
+    <label>Expiry Time</label>
+    <input type="time"
+           name="expiry_time"
+           required>
+
+    <button type="submit" class="post-btn">
+        Post Offer
+    </button>
+
+</form>
+
+<br>
+<a href="/admin_dashboard">Back to Dashboard</a>
+
+</body>
+</html>
