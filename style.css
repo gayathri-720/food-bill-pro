@@ -1,0 +1,193 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background: #ff4d4d;
+    color: white;
+}
+
+.logout-btn {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.menu-title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+.menu-card {
+    background: white;
+    width: 220px;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.menu-card:hover {
+    transform: scale(1.05);
+}
+
+.item-image {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff4d4d;
+}
+
+button {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #cc0000;
+}
+.quantity-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+.quantity-box button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0;
+}
+
+.quantity-box span {
+    font-size: 16px;
+    font-weight: bold;
+    width: 20px;
+}
+.search-bar {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search-bar input {
+    padding: 8px;
+    width: 250px;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+}
+.offer-card {
+    background: #fff3cd;
+    padding: 15px;
+    margin: 15px auto;
+    width: 60%;
+    border-radius: 8px;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+}
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+.scroll-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+    color: blue;
+    padding: 10px 0;
+    white-space: nowrap;
+    position: relative;
+}
+
+.scroll-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-right 9s linear infinite;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@keyframes scroll-right {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Background only for Login & Register pages */
+.auth-bg {
+    background: url("../static/login-bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Center container nicely */
+.container {
+    width: 350px;
+    margin: 100px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9); /* semi-transparent */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+/* Inputs */
+.container input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Button */
+.container button {
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.item-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
