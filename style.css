@@ -154,7 +154,7 @@ button:hover {
 
 /* Background only for Login & Register pages */
 .auth-bg {
-    background: url("../static/login-bg.jpg") no-repeat center center fixed;
+    background: url("/static/login-bg.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -190,4 +190,5 @@ button:hover {
     height: 150px;
     object-fit: cover;
     border-radius: 8px;
+
 }
